@@ -1,0 +1,51 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 200px;
+    background-color: #b5cadf;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #34495e;
+}
+
+.sidebar li:hover {
+    background-color: #7997b6;
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    background-color: #ecf0f1;
+}
+
+#taskContent {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+}

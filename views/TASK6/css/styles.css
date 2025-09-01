@@ -1,0 +1,34 @@
+    body {
+        margin: 0; /* Remove default body margin */
+        padding-top: 60px; /* Adjust based on header height */
+        padding-bottom: 40px; /* Adjust based on footer height */
+        padding-left: 20px;
+    }
+
+    .fixed-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #4c4669;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        z-index: 1000; /* Ensure it stays on top */
+        height: 60px; /* Example height */
+    }
+
+    .fixed-footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #4c4669;
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        z-index: 1000; /* Ensure it stays on top */
+        height: 40px; /* Example height */
+    }
+
+    
