@@ -41,6 +41,9 @@ While clicking on submit button, page should show up 1 to given input number, od
         <input type="submit" value="submit" name="submit">
     </form>
     <script src="#application.appBasePath#assets/js/script.js"></script>
+    <footer class="fixed-footer">
+        fixed footer
+    </footer>
 </body>
 </html>
 </cfoutput>

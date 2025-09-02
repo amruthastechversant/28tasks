@@ -112,6 +112,9 @@
         </div>
     </div>
     <script src="#application.appBasePath#assets/js/script.js"></script>
+    <footer class="fixed-footer">
+        fixed footer
+    </footer>
 </body>
 </html>
 </cfoutput>

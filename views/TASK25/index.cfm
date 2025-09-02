@@ -47,7 +47,9 @@
         </table>
         <input type="submit" name="submit" value="submit">
     </form>
-    
+    <footer class="fixed-footer">
+        fixed footer
+    </footer>
 </body>
 </html>
 </cfoutput>

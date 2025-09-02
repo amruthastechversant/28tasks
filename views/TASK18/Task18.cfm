@@ -41,5 +41,8 @@
 This Query variable should have 3 rows of data.
  <h6><br>
 </body>
+<footer class="fixed-footer">
+        fixed footer
+    </footer>
 </html>
 </cfoutput>

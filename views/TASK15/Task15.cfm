@@ -4,7 +4,7 @@
 <head>
     <title>TASK15</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="#application.appBasePath#views/TASK6/css/styles.css" rel="stylesheet">
+    <cfinclude  template="#application.appBasePath#views/shared/head.cfm">
 </head>
 <body>
      <header class="fixed-header">
@@ -67,6 +67,8 @@ Result of (1&2&3&4): #result6# <br>
     <cfset res3=obj.multiply(1,2,3,4)>
     Result of (1& 2 & 3 & 4):<cfoutput>#res3#</cfoutput>
 
-
+<footer class="fixed-footer">
+        fixed footer
+    </footer>
 </cfoutput>
 

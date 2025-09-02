@@ -24,6 +24,9 @@
             </tr>
         </table>
     </div>
+    <footer class="fixed-footer">
+        fixed footer
+    </footer>
 </body>
 </html>
 </cfoutput>

@@ -51,6 +51,9 @@
         <input type="text" name="email" id="email" value="#structkeyexists(form,'email') ? form.email:''#">
         <input type="submit" name="submit" value="submit">
     </form>
+    <footer class="fixed-footer">
+        fixed footer
+    </footer>
 </body>
 </html>
 </cfoutput>

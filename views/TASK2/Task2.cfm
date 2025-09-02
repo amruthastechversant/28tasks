@@ -8,8 +8,13 @@
 <html>
 <head>
 <title>TASK2</title>
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="#application.appBasePath#views/TASK6/css/styles.css" rel="stylesheet">
 </head>
 <body>
+    <header class="fixed-header">
+        fixed header
+    </header>
     <form method="POST">
         <label for="rating">Enter value between 1 and 5</label>
         <input type="number" name="rating" id="rating">
@@ -38,6 +43,9 @@
     </cfdefaultcase>
     </cfswitch>
     </cfif>
+    <footer class="fixed-footer">
+        fixed footer
+    </footer>
 </body>
 </html>
 </cfoutput>

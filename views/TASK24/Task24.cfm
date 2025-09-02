@@ -35,6 +35,9 @@
         <button type="submit" id="submitBtn" value="submit" name="submit"class="mt-2" disabled>Button</button>
     </form>
     <script src="#application.appBasePath#assets/js/script.js"></script>
+    <footer class="fixed-footer">
+        fixed footer
+    </footer>
 </body>
 </html>
 </cfoutput>

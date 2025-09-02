@@ -14,7 +14,7 @@
     function calculateAge(dob){
         var today=now();
         var age=dateDiff("yyyy",dob,today);
-        writeDump(age);abort;
+       
         if(dateCompare(dob, createDate(year(today),month(dob),day(dob)))>0){
             age=-1;
         }
@@ -26,7 +26,7 @@
 
         userAge=calculateAge(userDob);
         motherAge=dateDiff("yyyy", motherDob,userDob );
-        writeDump(motherAge);abort;
+      
 
     }
 
@@ -37,13 +37,27 @@
  <head>
  <title>TASK5</title>
  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="#application.appBasePath#views/TASK6/css/styles.css" rel="stylesheet">
+ <link href="#application.appBasePath#views/TASK6/css/styles.css" rel="stylesheet">
  </head>
  <body>
+    <header class="fixed-header">
+        fixed header
+    </header>
     <form method="POST">
-        <label for="USER AGE">USER AGE:#userAge#</label>
-        <label for="">AGE OF MOTHER:#motherAge#</label>
+        <table>
+        <tr>
+        <th><label for="USER AGE">USER AGE:</label></th>
+        <td>#userAge#</td>
+        </tr>
+        <tr>
+         <th><label for="">AGE OF MOTHER:</label></th>
+         <td>#motherAge#</td>
+         </tr>
+        </table>
      </form>
+     <footer class="fixed-footer">
+        fixed footer
+    </footer>
  </body>
  </html>
 </cfoutput>

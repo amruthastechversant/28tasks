@@ -10,8 +10,12 @@
 <head>
 <title>TASK4</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="#application.appBasePath#views/TASK6/css/styles.css" rel="stylesheet">
 </head>
 <body>
+    <header class="fixed-header">
+        fixed header
+    </header>
     <table border="0">
         <thead>
             <tr>
@@ -48,6 +52,9 @@
             </tr>
         </thead>
     </table>
+     <footer class="fixed-footer">
+        fixed footer
+    </footer>
 </body>
 </html>
 </cfoutput>

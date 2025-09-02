@@ -14,7 +14,7 @@
 <head>
     <title>TASK8</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="#application.appBasePath#TASK6/css/styles.css" rel="stylesheet">
+     <link href="#application.appBasePath#views/TASK6/css/styles.css" rel="stylesheet">
 </head>
 <body>
     <header class="fixed-header">

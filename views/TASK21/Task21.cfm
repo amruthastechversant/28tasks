@@ -64,6 +64,9 @@
         </tr>
         </table>
     </form>
+    <footer class="fixed-footer">
+        fixed footer
+    </footer>
 </body>
 </html>
 </cfoutput>

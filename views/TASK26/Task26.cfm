@@ -23,6 +23,9 @@
     </div>
     <div id="fileContent" class="text-primary"></div>
     <script src="#application.appBasePath#assets/js/fileRead.js"></script>
+    <footer class="fixed-footer">
+        fixed footer
+    </footer>
 </body>
 </html>
 </cfoutput>
