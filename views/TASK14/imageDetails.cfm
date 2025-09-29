@@ -26,7 +26,7 @@
                 </tr>
                 <tr>
                     <th>Image</th>
-                <td><img src="http://127.0.0.1:8500/myprojects/28%20CFTasks/views/upload/thumb_#imgFile#"></td>
+                <td><img src="http://127.0.0.1:8500/myprojects/28%20CFTasks/views/upload/#imgFile#"></td>
             </cfloop>
         </cfoutput>
         </div>

@@ -7,7 +7,7 @@ component{
     this.sessionTimeout = createTimeSpan(0, 0, 30, 0); 
 
     function onApplicationStart() {
-        application.appBasePath = "/myprojects/28 CFTasks/"
+        application.appBasePath = "/myprojects/28CFTasks/"
         application.datasource = this.datasource;
         return true;
     }

@@ -1,26 +1,26 @@
 
 <cfoutput>
-<cfif structKeyExists(form, "submit")>
-    <cfif NOT structKeyExists(session, "data") OR NOT isStruct(session.data)>
-        <cfset session.data={}>
-    </cfif>
-    <cfif structKeyExists(session, "data")>
-        <cfif structKeyExists(session.data, form.textbox1)>
-            <div style="color:red">duplicate entry not allowed</div>
-        <cfelse>
-            <cfset session.data[form.textbox1]=form.textbox2>
-        </cfif>
-        
-    </cfif>
+<cfset variables.textboxError_msg="">
+<cfset myData=structNew()>
+<cfif structKeyExists(form, "storedData") AND len(form.storedData)>
+        <cfset myData=deserializeJSON(storedData)>
 </cfif>
+    <cfif structKeyExists(form, "submit")>
+        <cfif len(trim(form.key)) and len(trim(form.value))>
+            <cfif structKeyExists(myData, form.key)>
+                <cfset variables.textboxError_msg="#form.key# already present. Cannot add again">
+            <cfelse>
+                <cfset myData[form.key]=form.value>
+            </cfif>
+        </cfif>
+    </cfif>
 <!---  <cfset structClear(session.data)>  --->
-<cfif structKeyExists(session, "data") AND structCount(session.data) GT 0>
-    <cfset keyArray = structKeyArray(session.data)>
+<cfif structCount(myData) GT 0>
+    <cfset keyArray = structKeyArray(myData)>
     <cfset arraySort(keyArray, "textnocase")>
-    
     <ul>
         <cfloop array="#keyArray#" index="key">
-            <li><strong>#key#</strong>: #session.data[key]#</li>
+            <li><strong>#key#</strong>: #myData[key]#</li>
         </cfloop>
     </ul>
 </cfif>
@@ -29,27 +29,22 @@
 <html>
 <head>
     <title>TASK10</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="#application.appBasePath#views/TASK6/css/styles.css" rel="stylesheet">
 </head>
 <body>
-<header class="fixed-header">
-        fixed header
-    </header>
-    <h6>TASK10:<br>
-     show the keys in alphabetical order.
-    CFDUMP the structure.
-    </h6>
-    <form method="POST" action="">
-    <label for="textbox1">Enter Key </label>
-    <input type="text" name="textbox1" value="#structkeyexists(form,"textbox1") ? (form.textbox1) : ''#" required>
-    <label for="textbox2">Enter Value</label>
-    <input type="text" name="textbox2" value="#structkeyexists(form,"textbox2") ? (form.textbox2) : ''#" required>
-    <input type="submit" name="submit" value="submit">
+    <form id="textboxForm" method="POST" action="">
+        <table>
+            <tr>
+                <td><label for="key">Enter Key </label></td>
+                <td><input type="text" name="key" id="key"value="#structkeyexists(form,"key") ? (form.key) : ''#"></td>
+                <td><label for="value">Enter Value</label></td>
+                <td><input type="text" name="value" id="value" value="#structkeyexists(form,"value") ? (form.value) : ''#"></td>
+                <input type="hidden" name="storedData" value=#serializeJSON(myData)#>
+                <td><input type="submit" name="submit" value="submit"></td>
+            </tr>
+        </table>
+        <div id="textboxError" class="text-danger">#textboxError_msg#</div>
     </form>
-    <footer class="fixed-footer">
-        fixed footer
-    </footer>
+    <script src="#application.appBasePath#assets/js/script.js"></script>
 </body>
 </html>
 </cfoutput>

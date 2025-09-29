@@ -3,7 +3,16 @@ param name="email" default="1";
 param name="form.firstname" default="";
 param name="form.email" default="";
 
-
+if (structKeyExists(url, "method")) {
+    switch (lcase(url.method)) {
+        case "emailexists":
+            EmailExists();
+            break;
+        case "saveform":
+            saveForm();
+            break;
+    }
+}
 public any function EmailExists(){
     emailCheck = queryExecute(
         "SELECT COUNT(*) AS total 
@@ -32,16 +41,7 @@ public any function saveForm(){
     )
     writeOutput("saved successfully")
 }
-if (structKeyExists(url, "method")) {
-    switch (lcase(url.method)) {
-        case "emailexists":
-            EmailExists();
-            break;
-        case "saveform":
-            saveForm();
-            break;
-    }
-}
+
 </cfscript>
 
 

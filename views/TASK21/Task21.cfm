@@ -1,6 +1,6 @@
 <cfoutput>
 <cfif structKeyExists(form, "submit")>
-    <cfset uploadDir=expandPath("../../assets/uploads/")>
+    <cfset uploadDir=expandPath("./views/assets/uploads/")>
     <cfif NOT directoryExists(uploadDir)>
         <cfdirectory  action="create" directory="#uploadDir#">
     </cfif>
@@ -24,49 +24,38 @@
 <html>
 <head>
     <title>TASK21</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="#application.appBasePath#views/TASK6/css/styles.css" rel="stylesheet">
 </head>
 <body>
-    <header class="fixed-header">
-        fixed header
-    </header>
-    <h6>TASK21:<br>
-    Create a birthday wishes page which contains the following fields.
-        Birthday Baby Name: Text box
-        His Email Id :	Text box
-        Birthday Wishes: Text area
-        Greeting image : File upload field
- <h6>
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form id="greetingForm" action="" method="POST" enctype="multipart/form-data">
         <table border="1" cellspacing="1" cellpadding="1">
         <tr>
             <td><label for="name"> Birthday Baby Name</label></td>
-            <td><input type="text" name="name" id="name"></td><br><br>
+            <td><input type="text" name="name" id="name">
+            <div id="nameError" class="text-danger"></div>
+            </td>
+            
         </tr>
         <tr>
             <td><label for="email">Email ID</label></td>
-            <td><input type="email" name="email" id="email"></td><br><br>
+            <td><input type="email" name="email" id="email">
+            <div id="emailError" class="text-danger"></div></td>
         </tr>
         <tr>
             <td><label for="greetings">Wishes</label></td>
-            <td> <textarea name="greetings" rows="5" cols="20"></textarea></td><br></br>
+            <td> <textarea name="greetings"  id="greetings"rows="5" cols="20"></textarea>
+            <div id="greetingsError" class="text-danger"></div></td>
         </tr>
         <tr>
             <td><label for="GreetingImage">Greetings Image</label></td>
-            <td> <input type="file" name="GreetingImage" accept="image/*"></td><br>
+            <td> <input type="file" name="GreetingImage" id="GreetingImage" accept="image/*"></td>
         </tr>
         <tr>
             <td><input type="submit" name="submit" value="submit"></td>
         </tr>
         </table>
+        <div id="error-msg" class="text-danger"></div>
     </form>
-    <footer class="fixed-footer">
-        fixed footer
-    </footer>
+    <script src="#application.appBasePath#assets/js/script.js"></script>
 </body>
 </html>
 </cfoutput>

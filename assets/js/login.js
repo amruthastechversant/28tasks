@@ -28,7 +28,7 @@ $(document).ready(function(){
             success:function(response){
                 var jsonResponse = JSON.parse(response);
                 console.log(jsonResponse);
-                if (jsonResponse.SUCCESS) {
+                if (jsonResponse.SUCCESS) {console.log(jsonResponse.SUCCESS);
                     showToast("Login", "Login successful!", "success");
                     setTimeout(function () {
                         window.location.href = baseURL + 'views/Task27/welcome.cfm';

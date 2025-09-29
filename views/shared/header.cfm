@@ -7,7 +7,6 @@
     </cfif>
     <div class="header-menu">
         <span><a href="#application.appBasePath#logout.cfm" onclick="return(confirm('are you sure want to logout'))">LogOut</a></span>
-
     </div>
 </div>
 </cfoutput>

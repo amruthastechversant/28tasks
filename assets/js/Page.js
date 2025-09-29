@@ -108,9 +108,5 @@ $(document).ready(function(){
         });
     }
 
-    $(document).on("click",".page-link",function(){
-        $("#pageDescContainer").show();
-        let desc=$(this).data("desc");
-        $("#pageDescContainer").html(desc);
-    })
+    
 });

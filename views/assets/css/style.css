@@ -32,14 +32,28 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: var(--darkgrey);
-  color: var(--white);
-  padding: 15px;
+  background-color: #a8a8a8;
+  color: var(--black);
+  padding: 25px;
   text-align: center;
   z-index: 1000;
   overflow: visible;
 }
 
+.userFooter {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #a8a8a8;
+    color: white;
+    padding: 25px ;
+    text-align: center;
+    z-index: 1000; /* Ensure it stays on top */
+    height: 40px; /* Example height */
+}
+
+.custom-card{background-color: #9ca9b4 !important;}
 /* Layout */
 .dashboard-container {
   display: flex;
@@ -83,30 +97,43 @@ body {
   transform: translateX(-50%);
   margin: 0;
 }
-.header-menu {
-  display: flex;
-}
+
 .header-menu span {
   margin-right: 20px;
 }
 .header-menu span a {
   text-decoration: none;
-  color:var(--white);
+  color:var(--black);
   font-weight: bold;
 }
 .header-menu span a:hover {
   color:var(--vibrantblue);
 }
+
+.header-menu a.active {
+    background: linear-gradient(to right, #1191d2 20%, #42a107 70%, #000 100%);
+    color: white !important;
+    background-size: 200% 100%;
+    animation: slideGradient 3s linear infinite;
+}
+
+
+@keyframes slideGradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 0%;
+    }
+}
 #pageDescContainer{
   max-width: 600px;
   margin: 20px auto;
   padding:70px;
-  border:1px solid #000000;
   border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   font-family:sans-serif;
   line-height: 1.6;
-  display: none;
 }
 
 .container {

@@ -9,13 +9,8 @@
 <!DOCTYPE html>
 <head>
 <title>TASK4</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="#application.appBasePath#views/TASK6/css/styles.css" rel="stylesheet">
 </head>
 <body>
-    <header class="fixed-header">
-        fixed header
-    </header>
     <table border="0">
         <thead>
             <tr>
@@ -32,29 +27,25 @@
             </tr>
             <tr>
                 <th>Last friday Date:</th>
-                <td>#lastfriday#</td>
+                <td>#dateFormat(lastfriday,'dd/mm/yyyy')#</td>
             </tr>
             <tr>
                 <th>Last day of month:</th>
                 <td>#dateFormat(lastDayOfMonth,'dd/mm/yyyy')#</td>
             </tr><td></td>
-            
             <tr>
                 <th>Last 5 days:</th>
                 <td>
-                <cfloop index="i" from="0" to="4">
+                <cfloop index="i" from="1" to="5">
                     <cfset pastday=dateAdd('d', -i, now)>
                     <cfset dayName=dateFormat(pastday,'dddd')>
                     <cfset daycolor=getDayColor(dayName)>
-                    #dateFormat(pastday,'dd-Mmm-yyyy')# - <span style="color:#daycolor#">#dayName#<br>
+                   <span style="#daycolor#"> #dateFormat(pastday,'dd-MMM-yyyy')# - <span style="#daycolor#">#dayName#<br>
                 </cfloop>
                 </td>
             </tr>
         </thead>
     </table>
-     <footer class="fixed-footer">
-        fixed footer
-    </footer>
 </body>
 </html>
 </cfoutput>
@@ -62,26 +53,26 @@
 <cffunction name="getDayColor" access="public" returnType="any">
 <cfswitch expression="#dayName#">
         <cfcase value="sunday">
-            <cfset daycolor="red">
+            <cfset daycolor="color:red">
         </cfcase>
         <cfcase value="monday">
-            <cfset daycolor="green">
+            <cfset daycolor="color:green">
         </cfcase>
         <cfcase value="tuesday">
-            <cfset daycolor="orange">
+            <cfset daycolor="color:##FFA500">
         </cfcase>
         <cfcase value="wednesday">
-            <cfset daycolor="brown">
+            <cfset daycolor="color:##f7cc16">
         </cfcase>
         <cfcase value="thursday">
-            <cfset daycolor="bold black">
+            <cfset daycolor='color:##000000;font-weight:bold;'>
         </cfcase>
         <cfcase value="friday">
-            <cfset daycolor="blue">
+            <cfset daycolor="color:blue">
         </cfcase>
         <cfcase value="saturday">
-            <cfset daycolor="bold red">
+            <cfset daycolor="color:##980707;font-weight:bold;">
         </cfcase>
-        </cfswitch>
+</cfswitch>
 <cfreturn daycolor>
 </cffunction>

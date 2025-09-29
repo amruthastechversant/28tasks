@@ -11,13 +11,13 @@
         <cfset session.isLoggedIn=true>
         <cfset session.username=qryUser.username>
         <cfset session.role=qryUser.role>
-        <cflocation  url="#application.appBasePath#views/Task28/adminDashboard.cfm">
+        <cflocation  url="#application.appBasePath#views/Task28/adminDashboard.cfm" addtoken="false">
     <cfelseif qryUser.recordCount GT 0 AND (qryUser.role[1] EQ "normal_user"  OR qryUser.role[1] EQ "user" )>
         <cfset session.id=qryUser.userid>
         <cfset session.isLoggedIn=true>
         <cfset session.username=qryUser.username>
         <cfset session.role=qryUser.role>
-        <cflocation  url="#application.appBasePath#views/Task28/userDashboard.cfm">
+        <cflocation  url="#application.appBasePath#views/Task28/userDashboard.cfm" addtoken="false">
     <cfelse>
         <cfset errorMessage="invalid login">
     </cfif>
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <link href="#application.appBasePath#views/TASK6/css/styles.css" rel="stylesheet">
+     <link href="#application.appBasePath#assets/css/common.css" rel="stylesheet"> 
 </head>
 <body>
     <div id="appConfig" data-baseurl="#application.appBasePath#"></div>
@@ -42,8 +42,8 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8">
-            <div class="card bg-secondary card-group d-block d-md-flex row">
-              <div class="card col-md-7 bg-secondary p-4 mb-0">
+            <div class="card  card-group d-block d-md-flex row">
+              <div class="card col-md-7  p-4 mb-0 custom-card">
                 <div class="card-body">
                   <h1>Login</h1>
                   <p class="text-body-secondary">Sign In to your account</p>
@@ -72,7 +72,7 @@
       </div>
     </div>
     <footer class="fixed-footer">
-    fixed footer
+      fixed footer
     </footer>
     <script src="#application.appBasePath#assets/js/login.js"></script>
     <cfinclude  template="#application.appBasePath#toast.cfm">

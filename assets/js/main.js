@@ -11,3 +11,7 @@ function showToast(title, message, type) {
         toastBody.style.color = '#198754';
     }
 }
+
+
+
+

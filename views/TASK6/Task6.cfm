@@ -1,35 +1,34 @@
 
+<cfset variables.error_msg="">
 <cfif structKeyExists(form, "submit")>
+    <cfif form.key EQ "" OR form.value EQ "">
+        <cfset variables.error_msg="Enter key and value">
+    <cfelse>
     <cfset struct=structNew()>
-    <cfset struct[form.textbox1]=form.textbox2>
+    <cfset struct[form.key]=form.value>
     <cfdump  var="#struct#">
+    </cfif>
 </cfif>
 <cfoutput>
 <!DOCTYPE html>
 <html>
 <head>
     <title>TASK6</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-      <link href="#application.appBasePath#views/TASK6/css/styles.css" rel="stylesheet">
 </head>
 <body>
-    <header class="fixed-header">
-        fixed header
-    </header>
-    <h6>TASK6:<br>
-    Create a web page that will have two text boxes and a submit button. When submitted, the page will post to self
-    Create a structure in ColdFusion with the values from the text box. The text entered in text box one is the key, and the text entered in text box 2 is the value. CFDUMP the structure.
-    </h6>
-    <form method="POST" action="">
-    <label for="textbox1">Enter Key </label>
-    <input type="text" name="textbox1" placeholder="enter key">
-    <label for="textbox2">Enter Value</label>
-    <input type="text" name="textbox2" placeholder="enter value">
-    <input type="submit" name="submit" value="submit">
+    <form id="textboxForm" method="POST" action="">
+    <table>
+        <tr>
+            <td><label for="key">Enter Key </label></td>
+            <td><input type="text" name="key" id="key"placeholder="enter key" maxlength="20"></td>
+            <td><label for="value">Enter Value</label></td>
+            <td><input type="text" name="value"  id="value" placeholder="enter value" maxlength="20"></td>
+            <td><input type="submit" name="submit" value="submit"></td>
+        </tr>   
+    </table>
+        <div id="textboxError" class="text-danger">#error_msg#</div>
     </form>
-    <footer class="fixed-footer">
-        fixed footer
-    </footer>
+    <script src="#application.appBasePath#assets/js/script.js"></script>
 </body>
 </html>
 </cfoutput>

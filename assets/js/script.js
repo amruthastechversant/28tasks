@@ -1,39 +1,146 @@
 
 $(document).ready(function(){
-    var baseURL = document.getElementById("appConfig").getAttribute("data-baseurl");
+    var baseURL = $("#appConfig").data("baseurl");
+
+
+    $("#inputForm").on("submit",function(e){
+        var success=$(".text-success");
+        var targetdiv=$(".success-msg");
+
+        if(success.length && targetdiv.length){
+            targetdiv.append(
+                $("<p>").addClass("text-success").text(success.text())
+            )
+        }
+    
+    
+    
+    })
+    $("#ageForm").on("submit",function(e){
+        let isValid=true;
+        var userAge=$("#usersAge").val();
+        var motherAge=$("#mothersAge").val();
+        if(userAge ==""){
+            $("#userAgeError").text("Enter user's Age");
+            isValid=false;
+        }
+
+        if(motherAge ==""){
+            $("#MotherAgeError").text("Enter mother's Age");
+             isValid=false;
+        }
+
+        if(!isValid){
+            e.preventDefault();
+        }
+
+    })
+
+    $("#textboxForm").on("submit",function(e){
+        let isValid=true;
+        var key=$("#key").val();
+        var value=$("#value").val();
+        if(key =="" || value == ""){
+            $("#textboxError").text("Enter key and value");
+             isValid=false;
+        }
+
+        if(!isValid){
+            e.preventDefault();
+        }
+        
+    })
+
+    $("#text").on("input",function(){
+        let numberField=$("#text").val();
+        message="";
+        if(isNaN(numberField)){
+            message="only number is allowed";
+        }
+        $("#numberError").text(message);
+    })
+
+    
     $("#userForm").on("submit",function(e){
+       
         let isValid=true;
         var number=$('#text').val();
 
         if(number==""){
-            $('#numberError').text("Enter numeric number");
+            $("#numberError").text("Enter numeric number");
             isValid=false;
         }
 
-        if(isNaN(number)){
-            $('#numberError').text("only number is allowed");
-            isValid=false;
-
-        }
         if(!isValid){
             e.preventDefault();
         }
     })
 
+    $("#greetingForm").on("submit",function(e){
+       
+        let isValid=true;
+
+        var name=$("#name").val();
+        var email=$("#email").val();
+        var greetings=$("#greetings").val();
+        if(name==""){
+            $("#nameError").text("Enter name");
+            isValid=false;
+        }
+        
+        if(email==""){
+            $("#emailError").text("Enter email");
+            isValid=false;
+        }
+
+         if(greetings==""){
+            $("#greetingsError").text("Enter email");
+            isValid=false;
+        }
+        
+        if(!isValid){
+            e.preventDefault();
+        }
+    })
+    
+     $("#GreetingImage").on('change',function(e){
+        var file=e.target.files[0];
+        var  MAX_SIZE_BYTES = 1 * 1024 * 1024;
+        const allowedTypes = ['image/jpeg','image/png','image/gif'];
+        var message="";
+
+        if(file.size > MAX_SIZE_BYTES){
+            message="Image size is greater than 1MB ";
+            $(this).val("");
+        }
+        if(file && !allowedTypes.includes(file.type)){
+            message="only jpg,png,gif files are allowed";
+           $(this).val("");
+          
+        }
+        $("#error-msg").text(message);
+   })
     $("#empForm").on("submit",function(e){
+         
         // Stop form until we validate
         let errors = [];
+        let email = $("#email").val().trim();
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         let isValid=true;
         // 1. Designation
         if ($("#designation").val().trim() === "") {
-            errors.push("Please select a designation.");
+            $("#designationError").text("Please select a designation.");
             isValid=false;
+        } else{
+            $("#designationError").text("");
         }
 
         // 2. Relocate (radio)
         if ($("input[name='agree']:checked").length === 0) {
-            errors.push("Please select if you are willing to relocate.");
+            $("#relocateError").text("Please select if you are willing to relocate.");
             isValid=false;
+        }else{
+            $("#relocateError").text("");
         }
 
         // 3. Start date fields (month/day/year)
@@ -42,43 +149,27 @@ $(document).ready(function(){
         let year = $("#year").val().trim();
         if (month === "" || day === "" || year === "" || 
             isNaN(month) || isNaN(day) || isNaN(year)) {
-            errors.push("Please enter a valid start date (MM/DD/YYYY).");
-            isValid=false;
-        }
-
-        // 4. Portfolio
-        let portfolio = $("#portfolio").val().trim();
-        if (portfolio === "" || !/^https?:\/\//i.test(portfolio)) {
-            errors.push("Please enter a valid portfolio URL (starting with http:// or https://).");
-            isValid=false;
-        }
-
-        // 5. Resume file
-        let resume = $("input[type='file']").val();
-        if (resume === "") {
-            errors.push("Please upload your resume.");
-            isValid=false;
-        } else {
-            let allowedExt = /\.(pdf|doc|docx)$/i;
-            if (!allowedExt.test(resume)) {
-                errors.push("Resume must be a PDF, DOC, or DOCX file.");
-            }
-            isValid=false;
-        }
-
-        // 6. Salary
-        if ($("#dollars").val().trim() === "" || isNaN($("#dollars").val()) ||
-            $("#cents").val().trim() === "" || isNaN($("#cents").val())) {
-            errors.push("Please enter valid salary in dollars and cents.");
-            isValid=false;
+                $("#DateError").text("Please enter a valid start date (MM/DD/YYYY).");
+                isValid=false;        
+        }else{
+            $("#DateError").text("");
         }
 
         // 7. Name
         if ($("#first").first().val().trim() === "" || $("#first").last().val().trim() === "") {
-            errors.push("Please enter your first and last name.");
+            $("#NameError").text("Please enter your first and last name.");
             isValid=false;
+        }else{
+            $("#NameError").text("");
         }
 
+        if(email ===""){
+            $("#EmailAddressError").text("Please Enter an Email Address");
+        }else if(!emailPattern.test(email)){
+            $("#EmailAddressError").text("Please Enter valid Email address");
+        }else{
+            $("#EmailAddressError").text("");
+        }
         // 8. Phone
         if ($("#phone1").val().trim().length !== 3 ||
             $("#phone2").val().trim().length !== 3 ||
@@ -86,25 +177,27 @@ $(document).ready(function(){
             isNaN($("#phone1").val()) ||
             isNaN($("#phone2").val()) ||
             isNaN($("#phone3").val())) {
-            errors.push("Please enter a valid phone number.");
+            $("#phonenoError").text("Please enter a valid phone number.");
             isValid=false;
+        }else{
+            $("#phonenoError").text("");
         }
 
         // Show errors or submit
-        if (errors.length > 0) {
-            $("#errorMsg").html(errors.join("<br>"));
-            isValid=false;
+        if (!isValid) {
             e.preventDefault();
-            
+
         } else {
             $("#errorMsg").html("");
              // Allow normal form submission
         }
-   
+        
 
-    $(".calendar-icon").on("click", function() {
-    $("#hiddenDate")[0].showPicker(); // Native date picker
-    });
+       
+
+        $(".calendar-icon").on("click", function() {
+        $("#hiddenDate")[0].showPicker(); // Native date picker
+        });
 
     $("#hiddenDate").on("change", function() {
         let date = new Date($(this).val());
@@ -117,7 +210,7 @@ $(document).ready(function(){
 
     $("#checkBtn").click(function(){
         var email=$("#email").val().trim();
-        if(email===""){
+        if(email==""){
             $("#validationError").html("<span class='error'>Enter Mail id</span>");
             return;
         }
@@ -128,7 +221,8 @@ $(document).ready(function(){
             data:{email:email},
             success:function(response){
                 if(response.trim()==="Exists"){
-                    $("#validationError").html("<span class='error'>Mail id already there</span>");
+                    $("#validationMsg").html("<span class='text-danger'>Mail id already there</span>");
+
                     $("#submitBtn").prop("disabled",true);
                 }
                else{
@@ -145,9 +239,10 @@ $(document).ready(function(){
             type:'POST',
             data:$("#subscribeForm").serialize(),
             success:function(response){
-                    $("#validationError").html("<span class='success'>"+response+"</span>");
+                    $("#validationMsg").html("<div class='text-success'>"+response+"</div>");
                     $("#submitBtn").prop("disabled", true);
-            }
+            }     
+
         })
     })
 
@@ -170,5 +265,22 @@ $(document).ready(function(){
         $("#validationMessage").text(message);
    })
    
-
 });
+
+
+ $(".loadTask1").click(function(){
+    $("#myBtn").removeClass("d-none");
+        var url = $(this).data("url"); 
+        console.log("loading url",url);
+        $("#sub-content").load(url, function (response, status, xhr) {
+            if (status === "error") {
+                $("#sub-content").html("<p>Error loading task.</p>");
+                console.error("Error:", xhr.status, xhr.statusText);
+            }
+        });
+})
+
+$("#myBtn").click(function(){
+    $("#sub-content").show();
+
+})

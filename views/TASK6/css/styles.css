@@ -31,4 +31,10 @@
         height: 40px; /* Example height */
     }
 
-    
+   .tablearray  {
+     border-collapse: collapse;
+}
+    .tablearray td,  th {
+    border: 1px solid black; /* border for each cell */
+    padding: 5px;            /* optional: space inside cells */
+}
